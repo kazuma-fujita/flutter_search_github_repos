@@ -80,7 +80,7 @@ class RepositoryList extends HookWidget {
 
   Widget _errorView(String errorMessage) {
     Fluttertoast.showToast(
-      msg: '$errorMessage エラーが発生しました',
+      msg: errorMessage,
       backgroundColor: Colors.grey,
     );
     return Container();

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter_search_github_repos/repository_entity.dart';
 import 'package:http/http.dart' as http;
 
@@ -7,11 +8,18 @@ class GithubRepository {
       String searchKeyword) async {
     final url =
         'https://api.github.com/search/repositories?q=$searchKeyword&sort=stars&order=desc';
-    final response = await http.get(url);
+    try {
+      final response = await http.get(url);
+      return _parseResponse(response.statusCode, response.body);
+    } on SocketException {
+      throw Exception('No Internet connection');
+    }
+  }
 
-    switch (response.statusCode) {
+  List<RepositoryEntity> _parseResponse(int httpStatus, String responseBody) {
+    switch (httpStatus) {
       case 200:
-        final decodedJson = json.decode(response.body) as Map<String, dynamic>;
+        final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
         final repositoryList = <RepositoryEntity>[];
         if (decodedJson['total_count'] as int == 0) {
           return repositoryList;
@@ -22,9 +30,13 @@ class GithubRepository {
         }
         return repositoryList;
         break;
-      default:
-        final decodedJson = json.decode(response.body) as Map<String, dynamic>;
+      case 422:
+        // [q=]の検索キーワードが空文字の場合HttpStatus422 Validation Failedエラーが発生
+        final decodedJson = json.decode(responseBody) as Map<String, dynamic>;
         throw Exception(decodedJson['message']);
+        break;
+      default:
+        throw Exception('$httpStatus Unknown Error');
         break;
     }
   }
