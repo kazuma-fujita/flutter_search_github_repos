@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_search_github_repos/main.dart';
 import 'package:flutter_search_github_repos/repository_entity.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RepositoryListView extends StatelessWidget {
@@ -67,7 +68,7 @@ class RepositoryList extends HookWidget {
             )
           : _emptyListView(),
       loading: _loadingView,
-      error: (error, stackTrace) => _errorView(error as String),
+      error: (error, _) => _errorView(error.toString()),
     );
   }
 
@@ -78,9 +79,11 @@ class RepositoryList extends HookWidget {
   }
 
   Widget _errorView(String errorMessage) {
-    return Center(
-      child: Text(errorMessage),
+    Fluttertoast.showToast(
+      msg: '$errorMessage エラーが発生しました',
+      backgroundColor: Colors.grey,
     );
+    return Container();
   }
 
   Widget _emptyListView() {

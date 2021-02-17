@@ -8,13 +8,13 @@ part 'repository_entity.freezed.dart';
 abstract class RepositoryEntity with _$RepositoryEntity {
   const factory RepositoryEntity({
     @required final int id,
-    @required @JsonKey(name: 'full_name') final String fullName,
+    @required final String fullName,
     final String description,
     final String language,
-    @required @JsonKey(name: 'html_url') final String htmlUrl,
-    @required @JsonKey(name: 'stargazers_count') final int stargazersCount,
-    @required @JsonKey(name: 'watchers_count') final int watchersCount,
-    @required @JsonKey(name: 'forks_count') final int forksCount,
+    @required final String htmlUrl,
+    @required final int stargazersCount,
+    @required final int watchersCount,
+    @required final int forksCount,
     @required final RepositoryOwnerEntity owner,
   }) = _RepositoryEntity;
 
@@ -25,7 +25,7 @@ abstract class RepositoryEntity with _$RepositoryEntity {
 @freezed
 abstract class RepositoryOwnerEntity with _$RepositoryOwnerEntity {
   const factory RepositoryOwnerEntity({
-    @required @JsonKey(name: 'avatar_url') final String avatarUrl,
+    @required final String avatarUrl,
   }) = _RepositoryOwnerEntity;
 
   factory RepositoryOwnerEntity.fromJson(Map<String, dynamic> json) =>

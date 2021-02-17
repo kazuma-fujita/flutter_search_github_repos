@@ -7,19 +7,32 @@ part of 'repository_entity.dart';
 // **************************************************************************
 
 _$_RepositoryEntity _$_$_RepositoryEntityFromJson(Map<String, dynamic> json) {
-  return _$_RepositoryEntity(
-    id: json['id'] as int,
-    fullName: json['full_name'] as String,
-    description: json['description'] as String,
-    language: json['language'] as String,
-    htmlUrl: json['html_url'] as String,
-    stargazersCount: json['stargazers_count'] as int,
-    watchersCount: json['watchers_count'] as int,
-    forksCount: json['forks_count'] as int,
-    owner: json['owner'] == null
-        ? null
-        : RepositoryOwnerEntity.fromJson(json['owner'] as Map<String, dynamic>),
-  );
+  return $checkedNew(r'_$_RepositoryEntity', json, () {
+    final val = _$_RepositoryEntity(
+      id: $checkedConvert(json, 'id', (v) => v as int),
+      fullName: $checkedConvert(json, 'full_name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+      language: $checkedConvert(json, 'language', (v) => v as String),
+      htmlUrl: $checkedConvert(json, 'html_url', (v) => v as String),
+      stargazersCount:
+          $checkedConvert(json, 'stargazers_count', (v) => v as int),
+      watchersCount: $checkedConvert(json, 'watchers_count', (v) => v as int),
+      forksCount: $checkedConvert(json, 'forks_count', (v) => v as int),
+      owner: $checkedConvert(
+          json,
+          'owner',
+          (v) => v == null
+              ? null
+              : RepositoryOwnerEntity.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'fullName': 'full_name',
+    'htmlUrl': 'html_url',
+    'stargazersCount': 'stargazers_count',
+    'watchersCount': 'watchers_count',
+    'forksCount': 'forks_count'
+  });
 }
 
 Map<String, dynamic> _$_$_RepositoryEntityToJson(
@@ -38,9 +51,12 @@ Map<String, dynamic> _$_$_RepositoryEntityToJson(
 
 _$_RepositoryOwnerEntity _$_$_RepositoryOwnerEntityFromJson(
     Map<String, dynamic> json) {
-  return _$_RepositoryOwnerEntity(
-    avatarUrl: json['avatar_url'] as String,
-  );
+  return $checkedNew(r'_$_RepositoryOwnerEntity', json, () {
+    final val = _$_RepositoryOwnerEntity(
+      avatarUrl: $checkedConvert(json, 'avatar_url', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {'avatarUrl': 'avatar_url'});
 }
 
 Map<String, dynamic> _$_$_RepositoryOwnerEntityToJson(

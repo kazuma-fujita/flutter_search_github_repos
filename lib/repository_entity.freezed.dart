@@ -19,13 +19,13 @@ class _$RepositoryEntityTearOff {
 // ignore: unused_element
   _RepositoryEntity call(
       {@required int id,
-      @required @JsonKey(name: 'full_name') String fullName,
+      @required String fullName,
       String description,
       String language,
-      @required @JsonKey(name: 'html_url') String htmlUrl,
-      @required @JsonKey(name: 'stargazers_count') int stargazersCount,
-      @required @JsonKey(name: 'watchers_count') int watchersCount,
-      @required @JsonKey(name: 'forks_count') int forksCount,
+      @required String htmlUrl,
+      @required int stargazersCount,
+      @required int watchersCount,
+      @required int forksCount,
       @required RepositoryOwnerEntity owner}) {
     return _RepositoryEntity(
       id: id,
@@ -53,18 +53,13 @@ const $RepositoryEntity = _$RepositoryEntityTearOff();
 /// @nodoc
 mixin _$RepositoryEntity {
   int get id;
-  @JsonKey(name: 'full_name')
   String get fullName;
   String get description;
   String get language;
-  @JsonKey(name: 'html_url')
   String get htmlUrl;
-  @JsonKey(name: 'stargazers_count')
   int get stargazersCount;
-  @JsonKey(name: 'watchers_count')
   int get watchersCount;
-  @JsonKey(name: 'forks_count')
-  int get forksCount; // @required final Map<String, Object> owner,
+  int get forksCount;
   RepositoryOwnerEntity get owner;
 
   Map<String, dynamic> toJson();
@@ -79,13 +74,13 @@ abstract class $RepositoryEntityCopyWith<$Res> {
       _$RepositoryEntityCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      @JsonKey(name: 'full_name') String fullName,
+      String fullName,
       String description,
       String language,
-      @JsonKey(name: 'html_url') String htmlUrl,
-      @JsonKey(name: 'stargazers_count') int stargazersCount,
-      @JsonKey(name: 'watchers_count') int watchersCount,
-      @JsonKey(name: 'forks_count') int forksCount,
+      String htmlUrl,
+      int stargazersCount,
+      int watchersCount,
+      int forksCount,
       RepositoryOwnerEntity owner});
 
   $RepositoryOwnerEntityCopyWith<$Res> get owner;
@@ -150,13 +145,13 @@ abstract class _$RepositoryEntityCopyWith<$Res>
   @override
   $Res call(
       {int id,
-      @JsonKey(name: 'full_name') String fullName,
+      String fullName,
       String description,
       String language,
-      @JsonKey(name: 'html_url') String htmlUrl,
-      @JsonKey(name: 'stargazers_count') int stargazersCount,
-      @JsonKey(name: 'watchers_count') int watchersCount,
-      @JsonKey(name: 'forks_count') int forksCount,
+      String htmlUrl,
+      int stargazersCount,
+      int watchersCount,
+      int forksCount,
       RepositoryOwnerEntity owner});
 
   @override
@@ -213,13 +208,13 @@ class _$_RepositoryEntity
     implements _RepositoryEntity {
   const _$_RepositoryEntity(
       {@required this.id,
-      @required @JsonKey(name: 'full_name') this.fullName,
+      @required this.fullName,
       this.description,
       this.language,
-      @required @JsonKey(name: 'html_url') this.htmlUrl,
-      @required @JsonKey(name: 'stargazers_count') this.stargazersCount,
-      @required @JsonKey(name: 'watchers_count') this.watchersCount,
-      @required @JsonKey(name: 'forks_count') this.forksCount,
+      @required this.htmlUrl,
+      @required this.stargazersCount,
+      @required this.watchersCount,
+      @required this.forksCount,
       @required this.owner})
       : assert(id != null),
         assert(fullName != null),
@@ -235,25 +230,20 @@ class _$_RepositoryEntity
   @override
   final int id;
   @override
-  @JsonKey(name: 'full_name')
   final String fullName;
   @override
   final String description;
   @override
   final String language;
   @override
-  @JsonKey(name: 'html_url')
   final String htmlUrl;
   @override
-  @JsonKey(name: 'stargazers_count')
   final int stargazersCount;
   @override
-  @JsonKey(name: 'watchers_count')
   final int watchersCount;
   @override
-  @JsonKey(name: 'forks_count')
   final int forksCount;
-  @override // @required final Map<String, Object> owner,
+  @override
   final RepositoryOwnerEntity owner;
 
   @override
@@ -335,13 +325,13 @@ class _$_RepositoryEntity
 abstract class _RepositoryEntity implements RepositoryEntity {
   const factory _RepositoryEntity(
       {@required int id,
-      @required @JsonKey(name: 'full_name') String fullName,
+      @required String fullName,
       String description,
       String language,
-      @required @JsonKey(name: 'html_url') String htmlUrl,
-      @required @JsonKey(name: 'stargazers_count') int stargazersCount,
-      @required @JsonKey(name: 'watchers_count') int watchersCount,
-      @required @JsonKey(name: 'forks_count') int forksCount,
+      @required String htmlUrl,
+      @required int stargazersCount,
+      @required int watchersCount,
+      @required int forksCount,
       @required RepositoryOwnerEntity owner}) = _$_RepositoryEntity;
 
   factory _RepositoryEntity.fromJson(Map<String, dynamic> json) =
@@ -350,25 +340,20 @@ abstract class _RepositoryEntity implements RepositoryEntity {
   @override
   int get id;
   @override
-  @JsonKey(name: 'full_name')
   String get fullName;
   @override
   String get description;
   @override
   String get language;
   @override
-  @JsonKey(name: 'html_url')
   String get htmlUrl;
   @override
-  @JsonKey(name: 'stargazers_count')
   int get stargazersCount;
   @override
-  @JsonKey(name: 'watchers_count')
   int get watchersCount;
   @override
-  @JsonKey(name: 'forks_count')
   int get forksCount;
-  @override // @required final Map<String, Object> owner,
+  @override
   RepositoryOwnerEntity get owner;
   @override
   @JsonKey(ignore: true)
@@ -385,8 +370,7 @@ class _$RepositoryOwnerEntityTearOff {
   const _$RepositoryOwnerEntityTearOff();
 
 // ignore: unused_element
-  _RepositoryOwnerEntity call(
-      {@required @JsonKey(name: 'avatar_url') String avatarUrl}) {
+  _RepositoryOwnerEntity call({@required String avatarUrl}) {
     return _RepositoryOwnerEntity(
       avatarUrl: avatarUrl,
     );
@@ -404,7 +388,6 @@ const $RepositoryOwnerEntity = _$RepositoryOwnerEntityTearOff();
 
 /// @nodoc
 mixin _$RepositoryOwnerEntity {
-  @JsonKey(name: 'avatar_url')
   String get avatarUrl;
 
   Map<String, dynamic> toJson();
@@ -417,7 +400,7 @@ abstract class $RepositoryOwnerEntityCopyWith<$Res> {
   factory $RepositoryOwnerEntityCopyWith(RepositoryOwnerEntity value,
           $Res Function(RepositoryOwnerEntity) then) =
       _$RepositoryOwnerEntityCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'avatar_url') String avatarUrl});
+  $Res call({String avatarUrl});
 }
 
 /// @nodoc
@@ -446,7 +429,7 @@ abstract class _$RepositoryOwnerEntityCopyWith<$Res>
           $Res Function(_RepositoryOwnerEntity) then) =
       __$RepositoryOwnerEntityCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'avatar_url') String avatarUrl});
+  $Res call({String avatarUrl});
 }
 
 /// @nodoc
@@ -476,15 +459,13 @@ class __$RepositoryOwnerEntityCopyWithImpl<$Res>
 class _$_RepositoryOwnerEntity
     with DiagnosticableTreeMixin
     implements _RepositoryOwnerEntity {
-  const _$_RepositoryOwnerEntity(
-      {@required @JsonKey(name: 'avatar_url') this.avatarUrl})
+  const _$_RepositoryOwnerEntity({@required this.avatarUrl})
       : assert(avatarUrl != null);
 
   factory _$_RepositoryOwnerEntity.fromJson(Map<String, dynamic> json) =>
       _$_$_RepositoryOwnerEntityFromJson(json);
 
   @override
-  @JsonKey(name: 'avatar_url')
   final String avatarUrl;
 
   @override
@@ -526,15 +507,13 @@ class _$_RepositoryOwnerEntity
 }
 
 abstract class _RepositoryOwnerEntity implements RepositoryOwnerEntity {
-  const factory _RepositoryOwnerEntity(
-          {@required @JsonKey(name: 'avatar_url') String avatarUrl}) =
+  const factory _RepositoryOwnerEntity({@required String avatarUrl}) =
       _$_RepositoryOwnerEntity;
 
   factory _RepositoryOwnerEntity.fromJson(Map<String, dynamic> json) =
       _$_RepositoryOwnerEntity.fromJson;
 
   @override
-  @JsonKey(name: 'avatar_url')
   String get avatarUrl;
   @override
   @JsonKey(ignore: true)

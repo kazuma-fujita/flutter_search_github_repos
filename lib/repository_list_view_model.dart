@@ -14,10 +14,17 @@ class RepositoryListViewModel
   final GithubRepository githubRepository;
 
   Future<void> searchRepositories(String searchKeyword) async {
+    if (searchKeyword.isEmpty) {
+      return;
+    }
+
     state = const AsyncValue.loading();
-    state = await githubRepository
-        .searchRepositories(searchKeyword)
-        .then((value) => AsyncValue.data(value))
-        .catchError((dynamic error) => AsyncValue<dynamic>.error(error));
+    try {
+      final repositoryList =
+          await githubRepository.searchRepositories(searchKeyword);
+      state = AsyncValue.data(repositoryList);
+    } on Exception catch (error) {
+      state = AsyncValue.error(error);
+    }
   }
 }
