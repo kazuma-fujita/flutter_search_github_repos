@@ -5,9 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RepositoryListViewModel
     extends StateNotifier<AsyncValue<List<RepositoryEntity>>> {
-  RepositoryListViewModel({
-    @required this.githubRepository,
-  }) : super(const AsyncValue.loading()) {
+  RepositoryListViewModel(this.githubRepository)
+      : super(const AsyncValue.loading()) {
     searchRepositories('flutter');
   }
 
