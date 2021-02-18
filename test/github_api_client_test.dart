@@ -19,7 +19,7 @@ void main() {
   });
 
   group('API communication testing', () {
-    test('Http status 200 testing', () async {
+    test('Http status 200 test', () async {
       final responseMock = fixture('http_status_200.json');
       _server.enqueue(httpCode: 200, body: responseMock);
       final responseBody = await _apiClient.get('/dummy/endpoint');
@@ -28,13 +28,13 @@ void main() {
       expect(request.uri.path, '/dummy/endpoint');
     });
 
-    test('Http status 404 testing', () async {
+    test('Http status 404 test', () async {
       final responseMock = fixture('http_status_404.json');
       _server.enqueue(httpCode: 422, body: responseMock);
       expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
     });
 
-    test('Http status 422 testing', () async {
+    test('Http status 422 test', () async {
       final responseMock = fixture('http_status_422.json');
       _server.enqueue(httpCode: 422, body: responseMock);
       expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
@@ -42,7 +42,7 @@ void main() {
   });
 
   group('API communication error testing', () {
-    test('Network error testing', () async {
+    test('Network error test', () async {
       _server.enqueue(httpCode: 200);
       await _server.shutdown();
       expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
