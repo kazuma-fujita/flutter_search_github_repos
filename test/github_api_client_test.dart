@@ -20,24 +20,24 @@ void main() {
 
   group('API communication testing', () {
     test('Http status 200 test', () async {
-      final responseMock = fixture('http_status_200.json');
-      _server.enqueue(httpCode: 200, body: responseMock);
-      final responseBody = await _apiClient.get('/dummy/endpoint');
+      final mockResponse = fixture('http_status_200.json');
+      _server.enqueue(httpCode: 200, body: mockResponse);
+      final responseBody = await _apiClient.get('/endpoint');
       final request = _server.takeRequest();
       expect(responseBody, isNotEmpty);
-      expect(request.uri.path, '/dummy/endpoint');
+      expect(request.uri.path, '/endpoint');
     });
 
     test('Http status 404 test', () async {
-      final responseMock = fixture('http_status_404.json');
-      _server.enqueue(httpCode: 422, body: responseMock);
-      expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
+      final mockResponse = fixture('http_status_404.json');
+      _server.enqueue(httpCode: 422, body: mockResponse);
+      expect(() => _apiClient.get('/endpoint'), throwsException);
     });
 
     test('Http status 422 test', () async {
-      final responseMock = fixture('http_status_422.json');
-      _server.enqueue(httpCode: 422, body: responseMock);
-      expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
+      final mockResponse = fixture('http_status_422.json');
+      _server.enqueue(httpCode: 422, body: mockResponse);
+      expect(() => _apiClient.get('/endpoint'), throwsException);
     });
   });
 
@@ -45,7 +45,7 @@ void main() {
     test('Network error test', () async {
       _server.enqueue(httpCode: 200);
       await _server.shutdown();
-      expect(() => _apiClient.get('/dummy/endpoint'), throwsException);
+      expect(() => _apiClient.get('/endpoint'), throwsException);
     });
   });
 }
