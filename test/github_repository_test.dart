@@ -1,5 +1,6 @@
 import 'package:flutter_search_github_repos/github_api_client.dart';
 import 'package:flutter_search_github_repos/github_repository.dart';
+import 'package:flutter_search_github_repos/repository_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -23,14 +24,18 @@ void main() {
       final repositoryList = await _githubRepository.searchRepositories('test');
 
       verify(_apiClient.get(any)).called(1);
-      expect(repositoryList, isNotNull);
-      expect(repositoryList.length, 1);
-      final repository = repositoryList[0];
-      expect(repository.id, 330997542);
-      expect(repository.fullName, 'Jasyyie/sympli.search.api');
-      expect(repository.stargazersCount, 10);
-      expect(repository.owner.avatarUrl,
-          'https://avatars.githubusercontent.com/u/49047008?v=4');
+      expect(
+        repositoryList,
+        isA<List<RepositoryEntity>>()
+            .having((list) => list, 'isNotNull', isNotNull)
+            .having((list) => list.length, 'length', 1)
+            .having((list) => list[0].id, 'id', 330997542)
+            .having((list) => list[0].fullName, 'fullName',
+                'Jasyyie/sympli.search.api')
+            .having((list) => list[0].stargazersCount, 'stargazersCount', 10)
+            .having((list) => list[0].owner.avatarUrl, 'avatarUrl',
+                'https://avatars.githubusercontent.com/u/49047008?v=4'),
+      );
     });
   });
 }
