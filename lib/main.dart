@@ -7,11 +7,11 @@ import 'package:flutter_search_github_repos/repository_list_view_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final apiClientProvider = Provider.autoDispose(
-  (_) => GithubApiClient(),
+  (_) => GithubApiClientImpl(),
 );
 
 final githubRepositoryProvider = Provider.autoDispose(
-  (ref) => GithubRepository(ref.read(apiClientProvider)),
+  (ref) => GithubRepositoryImpl(ref.read(apiClientProvider)),
 );
 
 final repositoryListViewModelProvider = StateNotifierProvider.autoDispose(

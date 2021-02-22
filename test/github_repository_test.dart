@@ -14,7 +14,7 @@ void main() {
 
   setUp(() async {
     _apiClient = MockGithubApiClient();
-    _githubRepository = GithubRepository(_apiClient);
+    _githubRepository = GithubRepositoryImpl(_apiClient);
   });
 
   group('Github repository testing', () {

@@ -10,7 +10,7 @@ void main() {
 
   setUp(() async {
     _server = MockWebServer(port: 8081);
-    _apiClient = GithubApiClient(baseUrl: 'http://127.0.0.1:8081');
+    _apiClient = GithubApiClientImpl(baseUrl: 'http://127.0.0.1:8081');
     await _server.start();
   });
 

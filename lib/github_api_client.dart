@@ -2,15 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-class GithubApiClient {
+// ignore: one_member_abstracts
+abstract class GithubApiClient {
+  Future<String> get(String endpoint);
+}
+
+class GithubApiClientImpl implements GithubApiClient {
   // factory コンストラクタは instanceを生成せず常にキャッシュを返す(singleton)
-  factory GithubApiClient({String baseUrl = 'https://api.github.com'}) {
-    return _instance ??= GithubApiClient._internal(baseUrl);
+  factory GithubApiClientImpl({String baseUrl = 'https://api.github.com'}) {
+    return _instance ??= GithubApiClientImpl._internal(baseUrl);
   }
   // クラス生成時に instance を生成する class コンストラクタ
-  GithubApiClient._internal(this.baseUrl);
+  GithubApiClientImpl._internal(this.baseUrl);
   // singleton にする為の instance キャッシュ
-  static GithubApiClient _instance;
+  static GithubApiClientImpl _instance;
   // GithubAPIの基底Url
   final String baseUrl;
 

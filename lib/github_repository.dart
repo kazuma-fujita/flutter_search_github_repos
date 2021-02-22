@@ -2,11 +2,17 @@ import 'dart:convert';
 import 'package:flutter_search_github_repos/github_api_client.dart';
 import 'package:flutter_search_github_repos/repository_entity.dart';
 
-class GithubRepository {
-  GithubRepository(this._apiClient);
+// ignore: one_member_abstracts
+abstract class GithubRepository {
+  Future<List<RepositoryEntity>> searchRepositories(String searchKeyword);
+}
+
+class GithubRepositoryImpl implements GithubRepository {
+  GithubRepositoryImpl(this._apiClient);
 
   final GithubApiClient _apiClient;
 
+  @override
   Future<List<RepositoryEntity>> searchRepositories(
       String searchKeyword) async {
     final responseBody = await _apiClient
