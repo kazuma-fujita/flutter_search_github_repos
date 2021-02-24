@@ -19,6 +19,7 @@ class GithubApiClientImpl implements GithubApiClient {
   // GithubAPIの基底Url
   final String baseUrl;
 
+  @override
   Future<String> get(String endpoint) async {
     final url = '$baseUrl$endpoint';
     try {
