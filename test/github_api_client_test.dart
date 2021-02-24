@@ -30,7 +30,7 @@ void main() {
 
     test('Http status 404 test', () async {
       final mockResponse = fixture('http_status_404.json');
-      _server.enqueue(httpCode: 422, body: mockResponse);
+      _server.enqueue(httpCode: 404, body: mockResponse);
       expect(() => _apiClient.get('/endpoint'), throwsException);
     });
 
