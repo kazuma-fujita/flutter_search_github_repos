@@ -10,7 +10,7 @@ class MockGithubApiClient extends Mock implements GithubApiClient {}
 
 void main() {
   GithubRepository _githubRepository;
-  MockGithubApiClient _apiClient;
+  GithubApiClient _apiClient;
 
   setUp(() async {
     _apiClient = MockGithubApiClient();
